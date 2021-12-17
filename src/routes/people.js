@@ -2,13 +2,13 @@ const express = require('express');
 const personSchema = require('../models/person');
 const router=express.Router();
 //listar todos los empleados
-const getPersons = async () => {
-    const persons = await personSchema.find();
-    return persons;
+const getPeople = async () => {
+    const people = await personSchema.find();
+    return people;
 };
 router.get('/get_employees', async (req, res) => {
     try {
-        res.json(await getPersons()); 
+        res.json(await getPeople()); 
     } catch (error) {
         //res.json({message:error})
         console.log(error);  
@@ -20,7 +20,7 @@ const getPerson = async (id) => {
     const person = personSchema.findById(id);
     return person;
 };
-router.get('/get_employees/:id_employee',async (req, res) => {
+router.get('/employees/:id_employee',async (req, res) => {
     try {
         const id = req.params.id_employee;
         res.json(await getPerson(id));
@@ -30,7 +30,7 @@ router.get('/get_employees/:id_employee',async (req, res) => {
 });
 
 //crear persona
-router.post('/create_employees', async (req, res)=>{
+router.post('/employees', async (req, res)=>{
     try {
         const person_data = req.body;
         const person = new personSchema(person_data)
@@ -44,7 +44,7 @@ router.post('/create_employees', async (req, res)=>{
 });
 
 //actualizar una persona
-router.put('/update_employees/:id_employee', async (req, res)=>{
+router.put('/employees/:id_employee', async (req, res)=>{
     try {
         const id = req.params.id_employee;
         const person_data = req.body;
@@ -58,7 +58,7 @@ router.put('/update_employees/:id_employee', async (req, res)=>{
 });
 
 //borrar una persona
-router.delete('/delete_employees/:id_employee', async (req, res)=>{
+router.delete('/employees/:id_employee', async (req, res)=>{
     try {
         const id=req.params.id_employee;
         const employee = personSchema.findById(id)
