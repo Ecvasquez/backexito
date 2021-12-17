@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 9000;
 const userRoutes = require("./routes/users");
 const personRoutes = require("./routes/persons");
 const contractRoutes = require("./routes/contracts");
@@ -11,6 +10,7 @@ app.use('/api',personRoutes);
 app.use('/api',contractRoutes);
 app.use('/api',applicationRoutes);
 require('dotenv').config();
+const port = process.env.PORT || 8000;
 //rutas
 app.get('/',(req,res) => {
     res.send('Bienvenido API Exito');
