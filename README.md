@@ -1,5 +1,5 @@
 # Equipo9
-<img src="ball_nine.jpg">
+<img src="ball_nine.jpg" width="100" height="100">
 
 ## MISIONTIC 2022 - UNIVERSIDAD DEL NORTE
 Final Project: Ciclo 4 Grupo 24
