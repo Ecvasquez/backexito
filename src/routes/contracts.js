@@ -6,7 +6,7 @@ const getContracts = async () => {
     const contracts = await contractSchema.find();
     return contracts;
 };
-router.get('/get_contracts', async (req, res) => {
+router.get('/contracts', async (req, res) => {
     try {
         res.json(await getContracts()); 
     } catch (error) {
@@ -19,7 +19,7 @@ const getContract = async (id) => {
     const contract = contractSchema.findById(id);
     return contract;
 };
-router.get('/get_contracts/:id_contract',async (req, res) => {
+router.get('/contracts/:id_contract',async (req, res) => {
     try {
         const id = req.params.id_contract;
         res.json(await getContract(id));
@@ -29,7 +29,7 @@ router.get('/get_contracts/:id_contract',async (req, res) => {
 });
 
 //crear contrato
-router.post('/create_contracts', async (req, res)=>{
+router.post('/contracts', async (req, res)=>{
     try {
         const contract_data = req.body;
         const contract = new contractSchema(contract_data)
@@ -43,7 +43,7 @@ router.post('/create_contracts', async (req, res)=>{
 });
 
 //actualizar un contrato
-router.put('/update_contracts/:id_contract', async (req, res)=>{
+router.put('/contracts/:id_contract', async (req, res)=>{
     try {
         const id = req.params.id_contract;
         const contract_data = req.body;
@@ -57,7 +57,7 @@ router.put('/update_contracts/:id_contract', async (req, res)=>{
 });
 
 //eliminar un contrato
-router.delete('/delete_contracts/:id_contract', async (req, res)=>{
+router.delete('/contracts/:id_contract', async (req, res)=>{
     try {
         const id=req.params.id_contract;
         const contract = contractSchema.findById(id)

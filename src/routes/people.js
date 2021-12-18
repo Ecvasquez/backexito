@@ -6,7 +6,7 @@ const getPeople = async () => {
     const people = await personSchema.find();
     return people;
 };
-router.get('/get_employees', async (req, res) => {
+router.get('/employees', async (req, res) => {
     try {
         res.json(await getPeople()); 
     } catch (error) {

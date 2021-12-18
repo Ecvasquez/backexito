@@ -6,7 +6,7 @@ const getApplications = async () => {
     const applications = await applicationSchema.find();
     return applications;
 };
-router.get('/get_applications', async (req, res) => {
+router.get('/applications', async (req, res) => {
     try {
         res.json(await getApplications()); 
     } catch (error) {
@@ -19,7 +19,7 @@ const getApplication = async (id) => {
     const application = applicationSchema.findById(id);
     return application;
 };
-router.get('/get_applications/:id_application',async (req, res) => {
+router.get('/applications/:id_application',async (req, res) => {
     try {
         const id = req.params.id_application;
         res.json(await getApplication(id));
@@ -29,7 +29,7 @@ router.get('/get_applications/:id_application',async (req, res) => {
 });
 
 //crear solicitud
-router.post('/create_applications', async (req, res)=>{
+router.post('/applications', async (req, res)=>{
     try {
         const application_data = req.body;
         const application = new applicationSchema(application_data)
@@ -43,7 +43,7 @@ router.post('/create_applications', async (req, res)=>{
 });
 
 //actualizar una solicitud
-router.put('/update_applications/:id_application', async (req, res)=>{
+router.put('/applications/:id_application', async (req, res)=>{
     try {
         const id = req.params.id_application;
         const application_data = req.body;

@@ -13,7 +13,7 @@ const applicationSchema = mongoose.Schema({
         required:true
     },
     finishApplication:{
-        type:Date,
+        type:String,
         required:true
     },
     justification:{

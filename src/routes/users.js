@@ -6,7 +6,7 @@ const getUsers = async () => {
     const users = await userSchema.find();
     return users;
 };
-router.get('/get_users', async (req, res) => {
+router.get('/users', async (req, res) => {
     try {
         res.json(await getUsers()); 
     } catch (error) {
@@ -20,7 +20,7 @@ const getUser = async (id) => {
     const person = userSchema.findById(id);
     return person;
 };
-router.get('/get_users/:id_user',async (req, res) => {
+router.get('/users/:id_user',async (req, res) => {
     try {
         const id = req.params.id_user;
         res.json(await getUser(id));
@@ -30,7 +30,7 @@ router.get('/get_users/:id_user',async (req, res) => {
 });
 
 //crear usuario
-router.post('/create_users', async (req, res)=>{
+router.post('/users', async (req, res)=>{
     try {
         const user_data = req.body;
         const user = new userSchema(user_data)
@@ -44,7 +44,7 @@ router.post('/create_users', async (req, res)=>{
 });
 
 //actualizar un usuario
-router.put('/update_users/:id_user', async (req, res)=>{
+router.put('/users/:id_user', async (req, res)=>{
     try {
         const id = req.params.id_user;
         const user_data = req.body;
@@ -58,7 +58,7 @@ router.put('/update_users/:id_user', async (req, res)=>{
 });
 
 //Eliminar un usuario
-router.delete('/delete_users/:id_user', async (req, res)=>{
+router.delete('/users/:id_user', async (req, res)=>{
     try {
         const id=req.params.id_user;
         const user = userSchema.findById(id)
