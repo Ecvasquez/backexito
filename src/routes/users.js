@@ -28,6 +28,18 @@ router.get('/users/:id_user',async (req, res) => {
         console.log(error); 
     }
 });
+//obtener ultimo usuario 
+const getLastUser = async () => {
+    const user = userSchema.findOne().sort({'_id':-1});
+    return user;
+};
+router.get('/lastuser',async (req, res) => {
+    try {
+        res.json(await getLastUser());
+    } catch (error) {
+        console.log(error); 
+    }
+});
 
 //crear usuario
 router.post('/users', async (req, res)=>{

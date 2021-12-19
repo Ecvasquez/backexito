@@ -27,6 +27,18 @@ router.get('/contracts/:id_contract',async (req, res) => {
         console.log(error); 
     }
 });
+//obtener ultimo contrato 
+const getLastContract = async () => {
+    const contract = contractSchema.findOne().sort({'_id':-1});
+    return contract;
+};
+router.get('/lastcontract',async (req, res) => {
+    try {
+        res.json(await getLastContract());
+    } catch (error) {
+        console.log(error); 
+    }
+});
 
 //crear contrato
 router.post('/contracts', async (req, res)=>{

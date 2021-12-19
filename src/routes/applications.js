@@ -27,6 +27,18 @@ router.get('/applications/:id_application',async (req, res) => {
         console.log(error); 
     }
 });
+//obtener ultima solicitud 
+const getLastApplication = async () => {
+    const application = applicationSchema.findOne().sort({'_id':-1});
+    return application;
+};
+router.get('/lastapplication',async (req, res) => {
+    try {
+        res.json(await getLastApplication());
+    } catch (error) {
+        console.log(error); 
+    }
+});
 
 //crear solicitud
 router.post('/applications', async (req, res)=>{

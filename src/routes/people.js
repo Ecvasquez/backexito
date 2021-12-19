@@ -29,6 +29,20 @@ router.get('/employees/:id_employee',async (req, res) => {
     }
 });
 
+//obtener ultima persona 
+const getLastPerson = async () => {
+    const person = await personSchema.findOne().sort({'_id':-1});
+    return person;
+};
+router.get('/lastemployee', async (req, res) => {
+    try {
+        res.json(await getLastPerson()); 
+    } catch (error) {
+        //res.json({message:error})
+        console.log(error);  
+    }
+});
+
 //crear persona
 router.post('/employees', async (req, res)=>{
     try {
