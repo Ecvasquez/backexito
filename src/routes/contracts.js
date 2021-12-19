@@ -1,5 +1,6 @@
 const express = require('express');
 const contractSchema = require('../models/contract');
+const personSchema = require('../models/person');
 const router=express.Router();
 //listar todos contratos 
 const getContracts = async () => {
@@ -14,6 +15,15 @@ router.get('/contracts', async (req, res) => {
         console.log(error);  
     }
 });
+router.get('/contractsdata', async (req, res) => {
+    try {
+        res.json(await getAllContracts()); 
+    } catch (error) {
+        //res.json({message:error})
+        console.log(error);  
+    }
+});
+
 //obtener contrato especifico 
 const getContract = async (id) => {
     const contract = contractSchema.findById(id);

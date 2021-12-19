@@ -1,7 +1,8 @@
 const mongoose = require('../db/Database');
 const applicationSchema = mongoose.Schema({
     personId:{
-        type:String,
+        type:mongoose.Schema.ObjectId, 
+        ref: 'person',
         required:true
     },
     applicationType:{

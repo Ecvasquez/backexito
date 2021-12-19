@@ -1,7 +1,8 @@
 const mongoose = require('../db/Database');
 const contractSchema = mongoose.Schema({
     personId:{
-        type:String,
+        type:mongoose.Schema.ObjectId, 
+        ref: 'person',
         required:true
     },
     contractType:{

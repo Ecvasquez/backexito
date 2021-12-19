@@ -13,7 +13,8 @@ const userSchema = mongoose.Schema({
         required:true
     },
     personId:{
-        type:String,
+        type:mongoose.Schema.ObjectId, 
+        ref: 'person',
         required:true
     }
 
